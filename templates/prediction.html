@@ -1,0 +1,213 @@
+{% include 'header.html' %}
+
+
+
+  <section class="text-gray-400 bg-black body-font relative">
+    <div class="container px-5 py-24 mx-auto">
+        <div class="flex flex-col lg:flex-row justify-between">
+            <!-- Results Display (Left Side) -->
+            <div class="lg:w-1/2 mb-12 lg:mb-0">
+                <!-- Left-aligned Heading -->
+                <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-white">Loan Approval Prediction:</h1>
+                <!-- Left-aligned Subheading -->
+                <p class="lg:w-2/3 leading-relaxed text-base">By Analyzing Data.</p>
+                <p class="lg:w-2/3 leading-relaxed text-base">We Draw the following Conclusion :</p>
+                
+  
+                <br> 
+                {% if error_message %}
+                {{ error_message}}
+               
+                 {% else %}
+               
+                 {% if prediction_text=="Yes" %}
+
+                 <h2 class="text-4xl font-extrabold text-green-500 sm:text-5xl lg:text-6xl">
+                 Yes 
+              </h2>
+
+              <br>
+
+  Based on the data you provided, <br> <span class="text-green-500 font-bold"> we are pleased to inform you that you meet the <br> eligibility criteria for obtaining a loan from most banks with confidence.</span>.
+      {% elif prediction_text=="No" %}
+
+      <h2 class="text-4xl font-extrabold text-green-500 sm:text-5xl lg:text-6xl">
+       No
+     </h2>
+
+ <span class="text-red-500 font-bold"> We regret to inform you that, based on the information provided, <br> securing a loan from most banks may be challenging at this time. We wish you the best of luck in your financial endeavors.</span>.
+        {% else %}
+
+Fill the Detail to see Result
+                                       
+                 {% endif %}
+               
+                 {% endif %}
+
+              
+           
+              </div>
+
+            <!-- Form (Right Side) -->
+            <form action="/prediction" method="post" class="lg:w-1/2 md:w-2/3 mx-auto">
+                <div class="flex flex-wrap -m-2">
+                  <div class="p-2 w-1/2">
+                    <div class="relative">
+                      <label for="name" class="leading-7 text-sm text-gray-400">Select Gender</label>
+                      <select id="gender" name="gender" class="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-indigo-500 focus:bg-gray-900 focus:ring-2 focus:ring-indigo-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                        
+                        <option value="">--Select Gender--</option>
+                        <option value=1>Male</option>
+                        <option value=0>Female</option>
+                      </select>
+                        </div>
+                  </div>
+        
+        
+        
+                  <div class="p-2 w-1/2">
+                    <div class="relative">
+                      <label for="name" class="leading-7 text-sm text-gray-400">Married Status :</label>
+                      <select id="gender" name="married" class="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-indigo-500 focus:bg-gray-900 focus:ring-2 focus:ring-indigo-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                        
+                        <option value="">--Select Married Status--</option>
+                        <option value=1>Yes</option>
+                        <option value=0>No</option>
+                      </select>
+                        </div>
+                  </div>
+        
+        
+                  <div class="p-2 w-1/2">
+                    <div class="relative">
+                      <label for="name" class="leading-7 text-sm text-gray-400">Dependents :</label>
+                      <select id="gender" name="dependents" class="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-indigo-500 focus:bg-gray-900 focus:ring-2 focus:ring-indigo-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                          
+                        <option value="">--Select Dependents--</option>
+                      
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3+">3+</option>
+                      </select>
+                        </div>
+                  </div>
+        
+        
+                  <div class="p-2 w-1/2">
+                    <div class="relative">
+                      <label for="name" class="leading-7 text-sm text-gray-400">Education:</label>
+                      <select id="gender" name="education" class="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-indigo-500 focus:bg-gray-900 focus:ring-2 focus:ring-indigo-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                      
+                        <option value="">--Select Education--</option>
+                        <option value=0>Graduate</option>
+                        <option value=1>Not Graduate</option>
+                      </select>
+                        </div>
+                  </div>
+        
+        
+        
+                  <div class="p-2 w-1/2">
+                    <div class="relative">
+                      <label for="name" class="leading-7 text-sm text-gray-400">Self Employed:</label>
+                      <select id="gender" name="selfemployed" class="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-indigo-500 focus:bg-gray-900 focus:ring-2 focus:ring-indigo-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                        <option value="">--Select Self Employed--</option>
+                        <option value=1>Yes</option>
+                        <option value=0>No</option>
+                      </select>
+                        </div>
+                  </div>
+        
+        
+        
+        
+                   <div class="p-2 w-1/2">
+                    <div class="relative">
+                      <label for="name" class="leading-7 text-sm text-gray-400">Property Area:</label>
+                      <select id="gender" name="propertyarea" class="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-indigo-500 focus:bg-gray-900 focus:ring-2 focus:ring-indigo-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                        <option value="">--Select Property Area -- </option>
+                        <option value="Urban">Urban</option>
+                        <option value="Rural">Rural</option>
+                        <option value="Semiurban">Semiurban</option>
+                      </select>
+                        </div>
+                  </div>
+        
+        
+        
+                  <div class="p-2 w-1/2">
+                    <div class="relative">
+                      <label for="name" class="leading-7 text-sm text-gray-400">Credit History:</label>
+                      <select id="gender" name="credithistory" class="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-indigo-500 focus:bg-gray-900 focus:ring-2 focus:ring-indigo-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                        <option >-- Select Credit History--</option>
+                        <option value="1.000000">1.000000</option>
+                        <option value="0.000000">0.000000</option>
+                        <option value="0.842199">0.842199</option>              
+                      </select>
+                        </div>
+                  </div>
+        
+        
+        
+                  <div class="p-2 w-1/2">
+                    <div class="relative">
+                      <label for="name" class="leading-7 text-sm text-gray-400">Loan Status :</label>
+                      <select id="gender" name="loanstatus" class="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-indigo-500 focus:bg-gray-900 focus:ring-2 focus:ring-indigo-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                       <option value="">--Select Loan Status -- </option>
+                        <option value="Y">Yes</option>
+                        <option value="N">No</option>
+                      </select>
+                        </div>
+                  </div>
+        
+        
+        
+        
+                  <div class="p-2 w-1/2">
+                    <div class="relative">
+                      <label for="email" class="leading-7 text-sm text-gray-400">Applicant Income :</label>
+                      <input type="number" step="0.01" id="appliincome" name="appliincome" class="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-indigo-500 focus:bg-gray-900 focus:ring-2 focus:ring-indigo-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                    </div>
+                  </div>
+                  <div class="p-2 w-1/2">
+                    <div class="relative">
+                      <label for="email" class="leading-7 text-sm text-gray-400">Co Applicant Income</label>
+                      <input type="number" step="0.01"  id="coappliincome" name="coappliincome" class="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-indigo-500 focus:bg-gray-900 focus:ring-2 focus:ring-indigo-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                    </div>
+                  </div>
+                  <div class="p-2 w-1/2">
+                    <div class="relative">
+                      <label for="email" class="leading-7 text-sm text-gray-400">Loan Amount :</label>
+                      <input type="number" step="0.01" id="loanAmount" name="loanAmount" class="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-indigo-500 focus:bg-gray-900 focus:ring-2 focus:ring-indigo-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                    </div>
+                  </div>
+                  <div class="p-2 w-1/2">
+                    <div class="relative">
+                      <label for="email" class="leading-7 text-sm text-gray-400">Loan Amount Term</label>
+                      <input type="number" step="0.01" id="loanterm" name="loanterm" class="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-indigo-500 focus:bg-gray-900 focus:ring-2 focus:ring-indigo-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                    </div>
+                  </div>
+                      
+                </div>
+
+                <br>
+
+                    <!-- ... -->
+
+                    <!-- Centered Button -->
+                    <div class="flex justify-center">
+                        <button type='reset' class="px-6 py-2 rounded-lg bg-blue-200 text-black mr-4">Clear</button>
+                        <button  type='submit' class="px-6 py-2 rounded-lg bg-yellow-300 text-black">Detect</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+{% include 'footer.html' %}
