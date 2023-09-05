@@ -8,7 +8,7 @@ import numpy as np
 from dataTransformer import dependent_Transformer,propertyArea_Transformer
 
 app = Flask(__name__)
-model = pickle.load(open('./models/model.pkl','rb'))
+model = pickle.load(open('models/model.pkl','rb'))
 
 
 @app.route("/")
