@@ -65,4 +65,4 @@ def predict():
       return render_template("prediction.html")
 
 
-app.run(debug=True)
+# app.run(debug=True)
